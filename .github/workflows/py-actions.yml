@@ -19,7 +19,7 @@ jobs:
         env:
           POSTGRES_USER: 'postgres'
           POSTGRES_PASSWORD: 'ECE2021'
-          POSTGRES_DB: 'github_actions'
+          POSTGRES_DB: 'DevOps'
         ports:
           - 5432:5432
         #options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
@@ -42,7 +42,7 @@ jobs:
     
     - name: Environment variable
       run: |
-        export DB=github_actions
+        export DB=DevOps
         export USR=postgres
         export PAWD=ECE2021
         export ADR=0.0.0.0

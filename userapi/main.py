@@ -40,7 +40,7 @@ def delete_todo(conn, todo):
     except:
         return " ", 0
 
-def get_user(conn):
+def get_todo(conn):
     try:
         cur = conn.cursor()
         sql = "Select * from devops_users"

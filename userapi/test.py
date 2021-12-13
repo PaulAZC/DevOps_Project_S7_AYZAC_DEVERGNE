@@ -23,3 +23,5 @@ def test_delete_todo():
     con , val = app.connection_database()
     app.delete_todo(con, "testTodoUpdate")
     assert val == 1
+
+#def test_get_todo()

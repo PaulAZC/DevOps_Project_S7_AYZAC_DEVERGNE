@@ -7,12 +7,6 @@ def test_connection_database():
     assert val == 1
 
 ################################################################################
-def test_create_table():
-    con , val = app.connection_database()
-    val = app.create_table(con)
-    assert val == 1
-
-################################################################################
 def test_create_todo():
     con , val = app.connection_database()
     app.create_todo(con, "testTodo")

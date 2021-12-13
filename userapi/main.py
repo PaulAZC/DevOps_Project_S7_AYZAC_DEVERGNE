@@ -17,22 +17,6 @@ def connection_database():
         return conn , 1
     except:
         return " " , 0    
-
-def create_table(conn):
-    try:
-        cur = conn.cursor()
-        cur.execute("""
-            CREATE TABLE IF NOT EXISTS public.devops_users
-            (
-                id integer NOT NULL DEFAULT nextval('devops_users_id_seq'::regclass),
-                todo character varying(255) COLLATE pg_catalog."default",
-                CONSTRAINT devops_users_pkey PRIMARY KEY (id)
-            ) """)
-        conn.commit()
-        cur.close() 
-        return 1
-    except:
-        return 0
     
 def create_todo(conn, todo):
     try:

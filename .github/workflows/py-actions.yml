@@ -40,13 +40,13 @@ jobs:
     - name: Run tests
       run: pytest test.py
     
-    - name: Environment variable
-      run: |
-        export DB=DevOps
-        export USR=postgres
-        export PAWD=ECE2021
-        export ADR=0.0.0.0
-        export PRT=5432
+    # - name: Environment variable
+    #   run: |
+    #     export DB=DevOps
+    #     export USR=postgres
+    #     export PAWD=ECE2021
+    #     export ADR=0.0.0.0
+    #     export PRT=5432
 
   # CD part
   deploy:

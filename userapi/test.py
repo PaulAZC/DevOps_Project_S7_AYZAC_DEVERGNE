@@ -13,7 +13,19 @@ def test_create_table():
     assert val == 1
 
 ################################################################################
-def test_create_user():
+def test_create_todo():
     con , val = app.connection_database()
-    app.create_user(con, "testUser", "testPassword")
+    app.create_todo(con, "testTodo")
+    assert val == 1
+
+################################################################################
+def test_update_todo():
+    con , val = app.connection_database()
+    app.update_todo(con, "testTodo", "testTodoUpdate")
+    assert val == 1
+
+################################################################################
+def test_delete_todo():
+    con , val = app.connection_database()
+    app.delete_todo(con, "testTodoUpdate")
     assert val == 1

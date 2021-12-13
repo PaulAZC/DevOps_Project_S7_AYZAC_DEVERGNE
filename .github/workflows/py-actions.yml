@@ -22,7 +22,6 @@ jobs:
           POSTGRES_DB: 'DevOps'
         ports:
           - 5432:5432
-        #options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -39,14 +38,6 @@ jobs:
 
     - name: Run tests
       run: pytest test.py
-    
-    # - name: Environment variable
-    #   run: |
-    #     export DB=DevOps
-    #     export USR=postgres
-    #     export PAWD=ECE2021
-    #     export ADR=0.0.0.0
-    #     export PRT=5432
 
   # CD part
   deploy:

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for
 from werkzeug.utils import redirect
 import psycopg2
+import uvicorn
 
 hostname = 'localhost'
 mydb = 'DevOps'
@@ -84,4 +85,4 @@ def todoList(newTodo):
     """
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, host='0.0.0.0')

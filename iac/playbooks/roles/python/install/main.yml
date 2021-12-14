@@ -1,0 +1,6 @@
+---
+
+- name: Install pip
+  install:
+    name: pip
+    state: latest

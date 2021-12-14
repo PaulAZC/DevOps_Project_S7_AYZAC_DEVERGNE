@@ -1,0 +1,16 @@
+# ---
+
+# - name: Run PostgreSQL
+#   service: name=postgresql state=started enabled=yes
+
+# - name: Create Database
+#   sudo_user: postgres
+#   postgresql_db: name="web"
+#              state=present
+
+# - name: Create user 
+#   sudo_user: postgres
+#   postgresql_user: db="web"
+#                name="Webservice"
+#                password="P@ssw0rd"
+#                state=present

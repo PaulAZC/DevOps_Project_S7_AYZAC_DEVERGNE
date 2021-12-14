@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  postgres:
+    #name of the docker  
+    container_name: bdd
+    # version of postgres 
+    image: postgres:9.6
+    # setting for restart
+    restart: on-failure
+    environment:
+      # creation of a user and a database
+      POSTGRES_USER: postgresDC
+      POSTGRES_PASSWORD: containerPWD
+      POSTGRES_DB: devops
+      # declaration of ports
+    ports:
+      - 5432:5432
+      
+  pyapp:
+    build: 
+      context: ./
+    ports:
+      - 5000:5000

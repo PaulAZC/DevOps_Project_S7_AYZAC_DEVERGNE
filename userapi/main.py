@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, url_for
-from werkzeug.utils import redirect
+from flask import Flask, render_template, request, url_for, redirect
 import psycopg2
 
 hostname = 'localhost'
@@ -40,7 +39,7 @@ def delete_todo(conn, todo):
     except:
         return " ", 0
 
-def get_user(conn):
+def get_todo(conn):
     try:
         cur = conn.cursor()
         sql = "Select * from devops_users"
@@ -84,4 +83,4 @@ def todoList(newTodo):
     """
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, host='0.0.0.0')

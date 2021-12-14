@@ -1,12 +1,14 @@
-FROM python:3.8
-
-WORKDIR /userapi
+FROM python:3.9.7
 
 COPY . .
 
 RUN pip install -r requirements.txt
 
-COPY ./userapi ./userapi
+WORKDIR /userapi
 
-CMD [ "python", "./userapi/main.py" ]
+#Running on 127.0.0.1:5000
+EXPOSE 5001:5000
 
+ENTRYPOINT [ "python" ]
+
+CMD ["main.py"]

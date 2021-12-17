@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.version: 1.21.0 (992df58d8)
+  labels:
+    io.kompose.service: web
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: web
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.version: 1.21.0 (992df58d8)
+      labels:
+        io.kompose.service: web
+    spec:
+      containers:
+      - env:
+        - name: ADR
+          value: postgres
+        - name: DB
+          value: web
+        - name: FLASK_APP
+          value: main.py
+        - name: FLASK_DEBUG
+          value: "1"
+        - name: PAWD
+          value: P@ssw0rd
+        - name: PRT
+          value: "5432"
+        - name: RUN
+          value: python main.py
+        - name: USR
+          value: Webservice
+        image: /alexandregmz/web_app
+        name: web
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}

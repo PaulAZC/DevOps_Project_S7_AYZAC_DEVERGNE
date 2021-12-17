@@ -42,11 +42,11 @@ def delete_todo(conn, todo):
 def get_todo(conn):
     try:
         cur = conn.cursor()
-        sql = "Select * from devops_users"
+        sql = "Select todo from devops_users ORDER BY id ASC "
         cur.execute(sql)
-        conn.commit()
+        rows = cur.fetchall()
         cur.close()
-        return "OK", 1
+        return rows, 1
     except:
         return " ", 0
 
@@ -73,14 +73,17 @@ def login():
         msg, value = create_todo(conn, todo)
         return redirect(url_for("todoList", newTodo=todo))
     else:
-        return render_template("login.html")
+        return render_template("addTodo.html")
 
 @app.route("/<newTodo>")
 def todoList(newTodo):
-    return f"""
-    <h1>Welcome {newTodo} ! Data has been send</h1>
-    Your Todo List :
-    """
+    return render_template("todoAdded.html")
+
+@app.route("/todoList")
+def myTodoList():
+    conn, stringValue = connection_database()
+    rows, value = get_todo(conn)
+    return render_template("todoList.html", values=rows)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

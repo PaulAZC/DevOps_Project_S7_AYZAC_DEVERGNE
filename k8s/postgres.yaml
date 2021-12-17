@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    io.kompose.service: postgres
+  name: postgres
+spec:
+  containers:
+  - env:
+    - name: POSTGRES_DB
+      value: postgres
+    - name: POSTGRES_PASSWORD
+      value: P@ssw0rd
+    - name: POSTGRES_USER
+      value: Webservice
+    image: postgres:9.6
+    name: bdd
+    ports:
+    - containerPort: 5432
+    resources: {}
+  restartPolicy: OnFailure
+status: {}

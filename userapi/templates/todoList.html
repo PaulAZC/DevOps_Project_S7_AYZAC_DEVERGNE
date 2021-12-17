@@ -1,0 +1,10 @@
+{% extends  "index.html" %}
+{% block title %}To do list{% endblock %}
+
+
+{% block content %}
+    <h1>Here is your todo list</h1>  
+    {% for item in values %}
+        <p>Task: {{item}}</p>
+    {% endfor %}  
+{% endblock %}

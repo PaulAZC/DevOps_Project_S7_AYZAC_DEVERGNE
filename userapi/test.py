@@ -24,4 +24,8 @@ def test_delete_todo():
     app.delete_todo(con, "testTodoUpdate")
     assert val == 1
 
-#def test_get_todo()
+#Test to read all tasks in the database
+def test_get_todo():
+    con , val = app.connection_database()
+    app.get_todo(con)
+    assert val==1

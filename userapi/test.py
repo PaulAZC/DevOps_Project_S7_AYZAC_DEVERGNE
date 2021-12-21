@@ -6,13 +6,6 @@ def test_connection_database():
     con , val = app.connection_database()
     assert val == 1
 
-#Test for the creation of an empty db
-def test_table_creation():
-    con, val = app.connection_database()
-    val = app.create_empty_table(con)
-    assert val==1
-
-
 #Test for the creation of a task in the database
 def test_create_todo():
     con , val = app.connection_database()

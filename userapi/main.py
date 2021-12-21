@@ -2,25 +2,25 @@ from flask import Flask, render_template, request, url_for, redirect
 import psycopg2
 import os
 
-DATABASE_NAME = os.getenv('DB')
-DATABASE_USER = os.getenv('USR')
-DATABASE_PASSWORD = os.getenv('PAWD')
-DATABASE_HOST = os.getenv('ADR')
-DATABASE_PORT = os.getenv('PRT')
+# DATABASE_NAME = os.getenv('DB')
+# DATABASE_USER = os.getenv('USR')
+# DATABASE_PASSWORD = os.getenv('PAWD')
+# DATABASE_HOST = os.getenv('ADR')
+# DATABASE_PORT = os.getenv('PRT')
 
-# hostname = 'localhost'
-# mydb = 'DevOps'
-# username = 'postgres'
-# passwrd = "ECE2021"
-# port_id = '5432'
+hostname = 'localhost'
+mydb = 'DevOps'
+username = 'postgres'
+passwrd = "ECE2021"
+port_id = '5432'
 
 app = Flask(__name__)
 
 
 def connection_database():
     try:
-        conn = psycopg2.connect(host=DATABASE_HOST, database=DATABASE_NAME,
-                                user=DATABASE_USER, password=DATABASE_PASSWORD, port=DATABASE_PORT)
+        conn = psycopg2.connect(host=hostname, database=mydb,
+                                user=username, password=passwrd, port=port_id)
         return conn, 1
     except:
         return " ", 0

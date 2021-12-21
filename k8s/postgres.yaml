@@ -1,10 +1,19 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  name: "postgres"
+  namespace: "default"
   labels:
-    io.kompose.service: postgres
-  name: postgres
+    app: "postgres"
 spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "postgres"
+  template:
+    metadata:
+      labels:
+        app: "postgres"
   containers:
   - env:
     - name: POSTGRES_DB
@@ -13,10 +22,39 @@ spec:
       value: P@ssw0rd
     - name: POSTGRES_USER
       value: Webservice
-    image: postgres:9.6
+    image: postgres:latest
     name: bdd
     ports:
-    - containerPort: 5432
-    resources: {}
-  restartPolicy: OnFailure
-status: {}
+      - containerPort: 5432
+        name: postgres
+    volumeMounts:
+      - name: postgres-storage
+        mountPath: /var/lib/postgresql/db-data
+    volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+        claimName: postgres-pv-claim
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+spec:
+  ports:
+    - port: 5432
+  selector:
+    app: postgres

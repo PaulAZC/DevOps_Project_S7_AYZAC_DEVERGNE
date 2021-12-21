@@ -1,23 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.version: 1.21.0 (992df58d8)
+  name: "flask"
+  namespace: "default"
   labels:
-    io.kompose.service: web
-  name: web
+    app: "flask"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: web
+      app: 'flask'
   strategy: {}
   template:
     metadata:
-      annotations:
-        kompose.version: 1.21.0 (992df58d8)
       labels:
-        io.kompose.service: web
+        app: "flask"
     spec:
       containers:
       - env:
@@ -37,11 +34,11 @@ spec:
           value: python main.py
         - name: USR
           value: Webservice
-        image: /alexandregmz/web_app
-        name: web
+        image: pyapp
         ports:
         - containerPort: 80
+        name: pyapp
         resources: {}
       restartPolicy: Always
       serviceAccountName: ""
-status: {}
+    status: {}

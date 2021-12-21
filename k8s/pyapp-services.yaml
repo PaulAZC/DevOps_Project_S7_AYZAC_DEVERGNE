@@ -1,17 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.version: 1.21.0 (992df58d8)
+  name: "flask-service"
+  namespace: "default"
   labels:
-    io.kompose.service: web
-  name: web
+    app: "flask"
 spec:
   ports:
   - name: "80"
     port: 80
     targetPort: 80
   selector:
-    io.kompose.service: web
+    app: "flask"
 status:
   loadBalancer: {}

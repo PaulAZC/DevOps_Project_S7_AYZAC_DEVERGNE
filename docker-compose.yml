@@ -9,16 +9,16 @@ services:
     restart: on-failure
     environment:
       # creation of a user and a database
-      POSTGRES_USER: Webservice
-      POSTGRES_PASSWORD: P@ssw0rd
-      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: devops
       # declaration of ports
     ports:
       - 5432:5432
     volumes:
       - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
  
-  web:
+  pyapp:
     build: ./
     depends_on: 
     - postgres
@@ -28,7 +28,7 @@ services:
       - "80:80"
     environment:
       - ADR=postgres
-      - USR=Webservice
-      - DB=web
-      - PAWD=P@ssw0rd
+      - USR=postgres
+      - DB=devops
+      - PAWD=postgres
       - PRT=5432

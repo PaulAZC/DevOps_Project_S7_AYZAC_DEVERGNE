@@ -19,7 +19,7 @@ The aim of this project will be to use all the tools seen in class within the sa
 | Containerisation with Docker                                    |  D    |     +1     | :white_check_mark: |
 | Orchestration with Docker Compose                               |  DC   |     +2     | :white_check_mark: |
 | Orchestration with Kubernetes                                   |  KUB  |     +3     |        :x:         |
-| Service mesh using Istio                                        |  IST  |     +2     |        :x:         |
+| Service mesh using Istio                                        |  IST  |     +2     | :white_check_mark: |
 | Infrastructure as code using Ansible                            |  IAC  |     +3     |        :x:         |
 | Monitoring                                                      |  MON  |     +2     |        :x:         |
 | Accurate project documentation in README.md file                |  DOC  |     +3     | :white_check_mark: |

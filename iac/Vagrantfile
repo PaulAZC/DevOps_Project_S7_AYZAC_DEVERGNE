@@ -11,24 +11,19 @@ Vagrant.configure("2") do |config|
 
   # Define the VM
   config.vm.define "project_devops" do |server|
-    # Specify the Vagrant box to use
-    server.vm.box = "centos/7"
-    config.vm.synced_folder "../userapi","/home/vagrant/userapi"
+    # Specify the Vagrant box to use 
+    server.vm.box = "debian/stretch64"
+    config.vm.synced_folder ".","/home/vagrant/userapi"
     # Specify the VM ip address
     server.vm.network :private_network, ip: "20.20.20.1"
-    # Specify the VM specs when using the Virtualbox provisioner
+     # Specify the VM specs when using the Virtualbox provisioner
     server.vm.provider "virtualbox" do |vb|
-      vb.name =  "project.devops.server.local"
+      vb.name =  "project_devops_server_local"
       # VM RAM in MB
       vb.memory = 2048
       # VM CPUs
-      vb.cpus = 1    
+      vb.cpus = 1  
     end    
-
-    config.vm.provider "vmware_desktop" do |vmware|
-      vmware.vmx["memsize"] = "2048"
-      vmware.vmx["numvcpus"] = "1"
-    end
   end
   
   Vagrant.configure("2") do |config|

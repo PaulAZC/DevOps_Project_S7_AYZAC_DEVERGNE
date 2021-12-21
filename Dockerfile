@@ -9,4 +9,4 @@ WORKDIR /userapi
 #Running on 127.0.0.1:5000
 EXPOSE 5001:5000
 
-CMD [ "pytest", "test.py" ]
+CMD [ "python", "main.py" ]

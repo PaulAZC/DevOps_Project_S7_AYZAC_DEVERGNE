@@ -1,22 +1,48 @@
 from flask import Flask, render_template, request, url_for, redirect
 import psycopg2
+import os
 
-hostname = 'localhost'
-mydb = 'DevOps'
-username = 'postgres'
-passwrd = "ECE2021"
-port_id = '5432'
+DATABASE_NAME = os.getenv('DB')
+DATABASE_USER = os.getenv('USR')
+DATABASE_PASSWORD = os.getenv('PAWD')
+DATABASE_HOST = os.getenv('ADR')
+DATABASE_PORT = os.getenv('PRT')
+
+# hostname = 'localhost'
+# mydb = 'DevOps'
+# username = 'postgres'
+# passwrd = "ECE2021"
+# port_id = '5432'
 
 app = Flask(__name__)
 
 
 def connection_database():
     try:
-        conn = psycopg2.connect(host=hostname,database=mydb,user=username,password=passwrd,port=port_id)  
-        return conn , 1
+        conn = psycopg2.connect(host=DATABASE_HOST, database=DATABASE_NAME,
+                                user=DATABASE_USER, password=DATABASE_PASSWORD, port=DATABASE_PORT)
+        return conn, 1
     except:
-        return " " , 0    
-    
+        return " ", 0
+
+
+def create_empty_table(conn):
+    try:
+        cur = conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS public.devops_users
+            (
+                id integer NOT NULL DEFAULT,
+                todo character varying(255) COLLATE pg_catalog."default",
+                CONSTRAINT devops_users_pkey PRIMARY KEY (id)
+            ) """)
+        conn.commit()
+        cur.close()
+        return 1
+    except:
+        return 0
+
+
 def create_todo(conn, todo):
     try:
         cur = conn.cursor()
@@ -27,6 +53,7 @@ def create_todo(conn, todo):
         return "OK", 1
     except:
         return " ", 0
+
 
 def delete_todo(conn, todo):
     try:
@@ -39,6 +66,7 @@ def delete_todo(conn, todo):
     except:
         return " ", 0
 
+
 def get_todo(conn):
     try:
         cur = conn.cursor()
@@ -49,6 +77,7 @@ def get_todo(conn):
         return rows, 1
     except:
         return " ", 0
+
 
 def update_todo(conn, todo, newTodo):
     try:
@@ -61,9 +90,13 @@ def update_todo(conn, todo, newTodo):
     except:
         return " ", 0
 
+
 @app.route("/")
 def home():
+    conn, stringValue = connection_database()
+    val = app.create_empty_table(conn)
     return render_template("index.html")
+
 
 @app.route("/todo", methods=["POST", "GET"])
 def login():
@@ -75,15 +108,18 @@ def login():
     else:
         return render_template("addTodo.html")
 
+
 @app.route("/<newTodo>")
 def todoList(newTodo):
     return render_template("todoAdded.html")
+
 
 @app.route("/todoList")
 def myTodoList():
     conn, stringValue = connection_database()
     rows, value = get_todo(conn)
     return render_template("todoList.html", values=rows)
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

@@ -37,16 +37,16 @@ jobs:
     - name: Environment variable
       run: |
           cd userapi
-          export DATABASE_NAME=DevOps
+          export DATABASE_NAME=action
           export DATABASE_USER=postgres
-          export DATABASE_PASSWORD=ECE2021
+          export DATABASE_PASSWORD=postgres
           export DATABASE_PORT=5432
-          export DATABASE_HOST=localhost
+          export DATABASE_HOST=0.0.0.0
 
     - name: Run tests
       run: |
         cd userapi
-        pytest test.py
+        pytest test-pass.py
 
 
   # CD part

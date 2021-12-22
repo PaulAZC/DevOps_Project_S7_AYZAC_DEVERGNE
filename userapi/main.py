@@ -4,17 +4,11 @@ import sentry_sdk
 from sentry_sdk.integrations.flask import FlaskIntegration
 import os
 
-# DATABASE_NAME = os.getenv('DATABASE_NAME')
-# DATABASE_USER = os.getenv('DATABASE_USER')
-# DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
-# DATABASE_HOST = os.getenv('DATABASE_HOST')
-# DATABASE_PORT = os.getenv('DATABASE_PORT')
-
-DATABASE_NAME="DevOps"
-DATABASE_USER="postgres"
-DATABASE_PASSWORD="ECE2021"
-DATABASE_HOST="localhost"
-DATABASE_PORT="5432"
+DATABASE_NAME = os.getenv('DATABASE_NAME')
+DATABASE_USER = os.getenv('DATABASE_USER')
+DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
+DATABASE_HOST = os.getenv('DATABASE_HOST')
+DATABASE_PORT = os.getenv('DATABASE_PORT')
 
 sentry_sdk.init(
     dsn="https://a1f323cb15ea4940a275aa43bf9782c9@o1095767.ingest.sentry.io/6115645",

@@ -35,8 +35,8 @@ services:
       - "80:80"
     #set the variable environment for the db
     environment:
-      - HOST=postgres
-      - USR=postgres
-      - DB=devops
-      - PWD=postgres
-      - PORT=5432
+      - DATABASE_HOST=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_NAME=devops
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_PORT=5432

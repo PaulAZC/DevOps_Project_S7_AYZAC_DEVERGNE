@@ -15,6 +15,18 @@
 
 ## 1. Description :
 The aim of this project will be to use all the tools seen in class within the same project. It will highlight a CRUD application.
+The project consists of the **creation of a web application** on any programming language, storing data in a database and cover it with tests of different levels. 
+For our web application, we decided to program it in **python**, and we stored the datas in a **postgres** database. 
+In this project, we used different technologies as : 
+    - CI/CD
+    - Vagrant
+    - Docker
+    - Docker Compose
+    - Kubernetes
+    - Istio
+    - Kiali
+    - Prometheus
+
 ## 2. Grades :
 | Subject                                                         | Code  | Max. grade |      Task done     |
 | :-------------------------------------------------------------- | :---: | :--------: | :----------------: |

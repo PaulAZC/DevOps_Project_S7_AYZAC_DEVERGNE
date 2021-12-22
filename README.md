@@ -46,8 +46,17 @@ The aim of this project will be to use all the tools seen in class within the sa
 ## 4. IaC :
 
 ## 5. Docker and Docker compose :
+* #### 5.1 Description 
+  * ##### Docker 
+  * Docker, a subset of the Moby project, is a software framework for building, running, and managing containers on servers and the cloud.
+  
+  * ##### Docker compose
+  * Docker Compose is a tool that was developed to help define and share multi-container applications. 
+  * With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
 
 ## 6. Kubernetes
+* #### 6.1 Description
+  * Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.
 
 ## 7. Istio and monitoring
 * ### 7.1 Istio

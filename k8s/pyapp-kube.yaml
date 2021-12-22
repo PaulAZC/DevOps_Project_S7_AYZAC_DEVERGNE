@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask
+  labels:
+    name: flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask
+        image: paulazc/pyapp-project-devops
+        env:
+          - name: DATABASE_HOST
+            value: postgres
+          - name: DATABASE_NAME
+            value: devops
+          - name: FLASK_APP
+            value: main.py
+          - name: DATABASE_PASSWORD
+            value: postgres
+          - name: DATABASE_PORT
+            value: "5432"
+          - name: RUN
+            value: python3 main.py
+          - name: DATABASE_USER
+            value: postgres
+      restartPolicy: Always
+

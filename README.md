@@ -3,12 +3,12 @@
 ## Links to the content of our project :
 - [1. Description of the project](#1-description-)
 - [2. Grades](#2-grades-)
-- [3. Application](#3-application-)
-- [4. Vagrant](#4-vagrant-)
+- [3. Run the application](#3-application-)
+- [4. IaC](#4-vagrant-)
 - [5. Docker and Docker compose](#5-docker-and-docker-compose-)
-- [6. Kubernetes :](#6-kubernetes-)
-- [7. Istio and monitoring :](#7-istio-and-monitoring-)
-- [8. Bonus :](#7-bonus-)
+- [6. Kubernetes](#6-kubernetes-)
+- [7. Istio and monitoring](#7-istio-and-monitoring-)
+- [8. Bonus :](#8-bonus-)
 
 ## 1. Description :
 The aim of this project will be to use all the tools seen in class within the same project. It will highlight a CRUD application.
@@ -28,7 +28,7 @@ The aim of this project will be to use all the tools seen in class within the sa
 | Using PostgreSQL for the CRUD application                       |  BNS  |     +1     | :white_check_mark: |
 | Sentry implementation for monitoring                            |  BNS  |     +1     | :white_check_mark: |
 | Total point                                                     |  TOT  |     15     | :white_check_mark: |
-## 3. Application :
+## 3. Run th application :
 * #### 3.1 Description
    
 * #### 3.2 Installation
@@ -40,31 +40,13 @@ The aim of this project will be to use all the tools seen in class within the sa
 * #### 3.4 Testing
     * To perfom test you need to have pytest , If not please enter the following command line in your terminal `pip install pytest`
     * To start test, enter in your terminal the following command line  `pytest test.py` for all the functionnalities
-## 4. Vagrant :
-* #### 4.1 Description
-  
-* #### 4.2 Installation
+## 4. IaC :
 
-* #### 4.3 Usage
-    * 
-* #### 4.4 Testing
-    * 
-* #### 4.5 Content
-    *
 ## 5. Docker and Docker compose :
-* #### 5.1 Description
-Docker is an open source software that allows you to launch applications in software containers. 
-The docker-compose build the dockerfile in the repository. 
-* #### 5.2 Installation
 
-* #### 5.3 Usage
-Run 'Docker-compose up -d' to build and run the application. 
-You can find it on the address '127.0.0.1:80/hello' in your browser. 
-To stop the service, you only have to do 'docker-compose stop'
-To remove all the daata and the previous services, you have to do 'docker-compose down' It will erase all the data. 
-* #### 5.4 Kubernet
-K8s folder contains all the file for kubernet to be run in minikube. 
-## 6. Tool integreted :
-* #### 6.1 CI/CD with Github and Gihub Action 
+## 6. Kubernetes
+
+## 7. Istio and monitoring
  
+## 8. Bonus
 

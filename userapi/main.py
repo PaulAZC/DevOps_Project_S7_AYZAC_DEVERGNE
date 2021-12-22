@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 import psycopg2
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 import os
 
 # DATABASE_NAME = os.getenv('DB')
@@ -14,8 +16,13 @@ username = 'postgres'
 passwrd = "ECE2021"
 port_id = '5432'
 
-app = Flask(__name__)
+sentry_sdk.init(
+    dsn="https://a1f323cb15ea4940a275aa43bf9782c9@o1095767.ingest.sentry.io/6115645",
+    integrations=[FlaskIntegration()],
+    traces_sample_rate=1.0
+)
 
+app = Flask(__name__)
 
 def connection_database():
     try:
@@ -108,6 +115,9 @@ def login():
     else:
         return render_template("addTodo.html")
 
+@app.route('/debug-sentry')
+def trigger_error():
+    division_by_zero = 1 / 0
 
 @app.route("/<newTodo>")
 def todoList(newTodo):

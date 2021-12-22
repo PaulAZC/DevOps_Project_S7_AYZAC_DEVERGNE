@@ -10,9 +10,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: userapi
     services:
       postgres:
         image: postgres:latest
@@ -45,7 +42,10 @@ jobs:
           export DATABASE_PORT=5432
 
     - name: Run tests
-      run: pytest test.py
+      run: |
+        cd userapi
+        pytest test.py
+
 
   # CD part
   deploy:

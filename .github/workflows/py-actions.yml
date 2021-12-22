@@ -36,7 +36,6 @@ jobs:
 
     - name: Environment variable
       run: |
-          cd userapi
           export DATABASE_NAME=action
           export DATABASE_USER=postgres
           export DATABASE_PASSWORD=postgres
@@ -45,6 +44,7 @@ jobs:
 
     - name: Run tests
       run: |
+        cd userapi
         pytest test.py
 
 

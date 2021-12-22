@@ -5,6 +5,7 @@ def test_connection_database():
     con , val = app.connection_database()
     assert val == 1
 
+
 #Test for the creation of a table
 def test_connection_database():
     con , val = app.connection_database()

@@ -1,16 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: "flask-service"
-  namespace: "default"
-  labels:
-    app: "flask"
+  name: flask-service
 spec:
   ports:
   - name: "80"
     port: 80
     targetPort: 80
   selector:
-    app: "flask"
+    app: pyapp
 status:
   loadBalancer: {}

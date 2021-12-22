@@ -1,0 +1,9 @@
+---
+
+- name: Install project requirements
+  pip:
+    environment:
+      PYTHONIOENCODING: utf8
+    requirements: "requirements.txt"
+    virtualenv_python: python3.8
+      

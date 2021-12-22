@@ -6,6 +6,13 @@ def test_connection_database():
     con , val = app.connection_database()
     assert val == 1
 
+
+#Test for the creation of a table
+def test_connection_database():
+    con , val = app.connection_database()
+    app.create_table(con)
+    assert val == 1
+
 #Test for the creation of a task in the database
 def test_create_todo():
     con , val = app.connection_database()

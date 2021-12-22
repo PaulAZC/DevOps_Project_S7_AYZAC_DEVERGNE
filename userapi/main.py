@@ -1,32 +1,32 @@
 from flask import Flask, render_template, request, url_for, redirect
 import psycopg2
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 import os
 
-# DATABASE_NAME = os.getenv('DB')
-# DATABASE_USER = os.getenv('USR')
-# DATABASE_PASSWORD = os.getenv('PAWD')
-# DATABASE_HOST = os.getenv('ADR')
-# DATABASE_PORT = os.getenv('PRT')
+DATABASE_NAME = os.getenv('DATABASE_NAME')
+DATABASE_USER = os.getenv('DATABASE_USER')
+DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
+DATABASE_HOST = os.getenv('DATABASE_HOST')
+DATABASE_PORT = os.getenv('DATABASE_PORT')
 
-hostname = 'localhost'
-mydb = 'DevOps'
-username = 'postgres'
-passwrd = "ECE2021"
-port_id = '5432'
+sentry_sdk.init(
+    dsn="https://a1f323cb15ea4940a275aa43bf9782c9@o1095767.ingest.sentry.io/6115645",
+    integrations=[FlaskIntegration()],
+    traces_sample_rate=1.0
+)
 
 app = Flask(__name__)
 
-
 def connection_database():
     try:
-        conn = psycopg2.connect(host=hostname, database=mydb,
-                                user=username, password=passwrd, port=port_id)
+        conn = psycopg2.connect(host=DATABASE_HOST, database=DATABASE_NAME, user=DATABASE_USER, password=DATABASE_PASSWORD, port=DATABASE_PORT)
         return conn, 1
     except:
         return " ", 0
 
 
-def create_empty_table(conn):
+def create_table(conn):
     try:
         cur = conn.cursor()
         cur.execute("""
@@ -38,7 +38,7 @@ def create_empty_table(conn):
             ) """)
         conn.commit()
         cur.close()
-        return 1
+        return "OK", 1
     except:
         return 0
 
@@ -94,7 +94,7 @@ def update_todo(conn, todo, newTodo):
 @app.route("/")
 def home():
     conn, stringValue = connection_database()
-    val = app.create_empty_table(conn)
+    create_table(conn)
     return render_template("index.html")
 
 
@@ -108,6 +108,9 @@ def login():
     else:
         return render_template("addTodo.html")
 
+@app.route('/debug-sentry')
+def trigger_error():
+    division_by_zero = 1 / 0
 
 @app.route("/<newTodo>")
 def todoList(newTodo):

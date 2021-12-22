@@ -6,3 +6,7 @@
   roles:
   - role: python/install
     tags: install
+  - role: postgres/install
+    tags: install
+  - role: packages/install
+    tags: install

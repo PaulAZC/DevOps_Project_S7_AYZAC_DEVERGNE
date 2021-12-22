@@ -1,44 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "flask"
-  namespace: "default"
-  labels:
-    app: "flask"
+  name: pyapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: 'flask'
-  strategy: {}
+      name: pyapp
   template:
     metadata:
       labels:
-        app: "flask"
-    spec:
+        app: pyapp
+  spec:
       containers:
+      - name: pyapp
       - env:
-        - name: ADR
+        - name: DATABASE_HOST
           value: postgres
-        - name: DB
-          value: web
+        - name: DATABASE_NAME
+          value: devops
         - name: FLASK_APP
           value: main.py
-        - name: FLASK_DEBUG
-          value: "1"
-        - name: PAWD
-          value: P@ssw0rd
-        - name: PRT
+        - name: DATABASE_PASSWORD
+          value: postgres
+        - name: DATABASE_PORT
           value: "5432"
         - name: RUN
-          value: python main.py
-        - name: USR
-          value: Webservice
-        image: pyapp
+          value: python3 main.py
+        - name: DATABASE_USER
+          value: postgres
+        image: mypyapp
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
-        name: pyapp
-        resources: {}
-      restartPolicy: Always
-      serviceAccountName: ""
-    status: {}

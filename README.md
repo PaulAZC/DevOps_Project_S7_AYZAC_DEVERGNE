@@ -1,17 +1,18 @@
 ## DevOps Project for the semester 7
 ## Authors : Paul AYZAC & Noémie DEVERGNE
 ## Links to the content of our project :
-- [1. Description of the project :](#1-description-)
-- [2. Specifications :](#2-specifications-)
-- [3. Application :](#3-application-)
-- [4. Vagrant :](#4-vagrant-)
-- [5. Docker :](#5-docker-)
-- [6. Tool integreted :](#6-tool-integreted-)
-- [7. Authors :](#7-authors-)
+- [1. Description of the project](#1-description-)
+- [2. Grades](#2-grades-)
+- [3. Application](#3-application-)
+- [4. Vagrant](#4-vagrant-)
+- [5. Docker and Docker compose](#5-docker-and-docker-compose-)
+- [6. Kubernetes :](#6-kubernetes-)
+- [7. Istio and monitoring :](#7-istio-and-monitoring-)
+- [8. Bonus :](#7-bonus-)
 
 ## 1. Description :
 The aim of this project will be to use all the tools seen in class within the same project. It will highlight a CRUD application.
-## 2. Specifications :
+## 2. Grades :
 | Subject                                                         | Code  | Max. grade |      Task done     |
 | :-------------------------------------------------------------- | :---: | :--------: | :----------------: |
 | Enriched web application with automated tests                   |  APP  |     +1     | :white_check_mark: |
@@ -25,6 +26,8 @@ The aim of this project will be to use all the tools seen in class within the sa
 | Accurate project documentation in README.md file                |  DOC  |     +3     | :white_check_mark: |
 | Use of the python language for the CRUD application             |  BNS  |     +1     | :white_check_mark: |
 | Using PostgreSQL for the CRUD application                       |  BNS  |     +1     | :white_check_mark: |
+| Sentry implementation for monitoring                            |  BNS  |     +1     | :white_check_mark: |
+| Total point                                                     |  TOT  |     15     | :white_check_mark: |
 ## 3. Application :
 * #### 3.1 Description
    
@@ -48,7 +51,7 @@ The aim of this project will be to use all the tools seen in class within the sa
     * 
 * #### 4.5 Content
     *
-## 5. Docker :
+## 5. Docker and Docker compose :
 * #### 5.1 Description
 Docker is an open source software that allows you to launch applications in software containers. 
 The docker-compose build the dockerfile in the repository. 

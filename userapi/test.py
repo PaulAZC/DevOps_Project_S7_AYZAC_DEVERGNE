@@ -1,9 +1,14 @@
 import main as app
-import pytest
 
 #Test for the connection to the postgres database
 def test_connection_database():
     con , val = app.connection_database()
+    assert val == 1
+
+#Test for the creation of a table
+def test_connection_database():
+    con , val = app.connection_database()
+    app.create_table(con)
     assert val == 1
 
 #Test for the creation of a task in the database

@@ -1,7 +1,8 @@
 version: '3.7'
 services:
+  #postgres service
   postgres:
-    #name of the docker  
+    #name of the container postgres  
     container_name: db
     # version of postgres 
     image: postgres:latest
@@ -12,23 +13,30 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: devops
-      # declaration of ports
+    # declaration of ports
     ports:
       - 5432:5432
+    #Declaration of the volume
     volumes:
       - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
  
+  #flask application
   pyapp:
+    #build the dockerfile with the flask app inside
     build: ./
+    #depends on the db
     depends_on: 
     - postgres
+    #set the volumes
     volumes:
       - ./app:/app
+    #set the port
     ports:
       - "80:80"
+    #set the variable environment for the db
     environment:
-      - ADR=postgres
+      - HOST=postgres
       - USR=postgres
       - DB=devops
-      - PAWD=postgres
-      - PRT=5432
+      - PWD=postgres
+      - PORT=5432

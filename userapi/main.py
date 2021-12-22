@@ -4,9 +4,9 @@ import os
 
 # DATABASE_NAME = os.getenv('DB')
 # DATABASE_USER = os.getenv('USR')
-# DATABASE_PASSWORD = os.getenv('PAWD')
-# DATABASE_HOST = os.getenv('ADR')
-# DATABASE_PORT = os.getenv('PRT')
+# DATABASE_PASSWORD = os.getenv('PWD')
+# DATABASE_HOST = os.getenv('HOST')
+# DATABASE_PORT = os.getenv('PORT')
 
 hostname = 'localhost'
 mydb = 'DevOps'
@@ -26,7 +26,7 @@ def connection_database():
         return " ", 0
 
 
-def create_empty_table(conn):
+def create_table(conn):
     try:
         cur = conn.cursor()
         cur.execute("""
@@ -38,7 +38,7 @@ def create_empty_table(conn):
             ) """)
         conn.commit()
         cur.close()
-        return 1
+        return "OK", 1
     except:
         return 0
 
@@ -94,7 +94,7 @@ def update_todo(conn, todo, newTodo):
 @app.route("/")
 def home():
     conn, stringValue = connection_database()
-    val = app.create_empty_table(conn)
+    create_table(conn)
     return render_template("index.html")
 
 

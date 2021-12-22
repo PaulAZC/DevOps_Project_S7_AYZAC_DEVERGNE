@@ -15,7 +15,7 @@ services:
       POSTGRES_DB: devops
     # declaration of ports
     ports:
-      - 5432:5432
+      - 5321:5321
     #Declaration of the volume
     volumes:
       - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
@@ -35,8 +35,9 @@ services:
       - "80:80"
     #set the variable environment for the db
     environment:
-      - DATABASE_HOST=postgres
+      - DATABASE_HOST=localhost
       - DATABASE_USER=postgres
       - DATABASE_NAME=devops
       - DATABASE_PASSWORD=postgres
       - DATABASE_PORT=5432
+      - FLASK_APP=main.py

@@ -19,7 +19,7 @@ jobs:
           POSTGRES_DB: 'action'
         ports:
           - 5432:5432
-
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v2
     - name: Set python version 
@@ -39,8 +39,8 @@ jobs:
           export DATABASE_NAME=action
           export DATABASE_USER=postgres
           export DATABASE_PASSWORD=postgres
-          export DATABASE_HOST=localhost
           export DATABASE_PORT=5432
+          export DATABASE_HOST=0.0.0.0
 
     - name: Run tests
       run: |

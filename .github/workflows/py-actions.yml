@@ -36,11 +36,11 @@ jobs:
 
     - name: Environment variable
       run: |
-          export DATABASE_NAME=action
+          export DATABASE_NAME=DevOps
           export DATABASE_USER=postgres
-          export DATABASE_PASSWORD=postgres
+          export DATABASE_PASSWORD=ECE2021
           export DATABASE_PORT=5432
-          export DATABASE_HOST=0.0.0.0
+          export DATABASE_HOST=localhost
 
     - name: Run tests
       run: |

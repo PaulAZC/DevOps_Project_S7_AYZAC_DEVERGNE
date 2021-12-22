@@ -36,6 +36,7 @@ jobs:
 
     - name: Environment variable
       run: |
+          cd userapi
           export DATABASE_NAME=DevOps
           export DATABASE_USER=postgres
           export DATABASE_PASSWORD=ECE2021

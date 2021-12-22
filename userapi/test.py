@@ -1,4 +1,5 @@
 import main as app
+import pytest
 
 #Test for the connection to the postgres database
 def test_connection_database():

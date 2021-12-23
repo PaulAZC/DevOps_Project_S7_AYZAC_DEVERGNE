@@ -1,0 +1,16 @@
+# - name: Create a database
+#   sudo_user: postgres
+#   postgresql_db: name="devops_project"
+
+# - name: Create user 
+#   sudo_user: postgres
+#   postgresql_user: db="devops_project"
+#                    name="postgres"
+#                    password="postgres"
+
+- name: Create a table inside the db
+  community.postgresql.postgresql_table:
+    name: devops
+    columns:
+    - id bigserial primary key
+    - todo varchar(255)
